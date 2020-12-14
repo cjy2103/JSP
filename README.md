@@ -8,6 +8,7 @@
 * eclipse(Enterprise)
 * Bootstrap 3.3.7 ver
 * apache-tomcat 8.5 ver 
+* MySQL Ver 8
 
 ## TODO
 - [x] 로그인 화면 디자인 
