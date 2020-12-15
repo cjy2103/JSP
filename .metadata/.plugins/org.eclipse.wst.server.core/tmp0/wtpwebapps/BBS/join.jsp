@@ -60,7 +60,7 @@
 								<input type="radio" name="userGender" autocomplete="off" value="남자" checked>남자
 							</label>
 							<label class="btn btn-primary ">
-								<input type="radio" name="userGender" autocomplete="off" value="여자" checked>여자
+								<input type="radio" name="userGender" autocomplete="off" value="여자">여자		<!-- 해당 영상에는 이쪽부분 checked 선택되어있어 회원가입시 성별이 랜덤하게 들어감 checked 삭제 -->
 							</label>						
 						</div>
 					</div>

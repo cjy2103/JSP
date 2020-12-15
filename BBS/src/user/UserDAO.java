@@ -12,10 +12,10 @@ public class UserDAO {
 	
 	public UserDAO() {
 		try {
-			String dbURL ="jdbc:mysql://localhost:3306/BBS?serverTimezone=UTC";   // MySQL 8버전 이상은 이렇게 설정해줘야함
+			String dbURL ="jdbc:mysql://localhost:3306/BBS?serverTimezone=UTC";   // MySQL 8버전 이상은 이렇게 설정해줘야함 
 			String dbID = "root";
 			String dbPassword = "root";
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");	// 이쪽부분도 MySQL 8버전에 맞게 수정  * 추가 JDBC connector-java class path는 Module Path에 Add External JARs를 한다.
 			conn = DriverManager.getConnection(dbURL,dbID,dbPassword);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -40,7 +40,24 @@ public class UserDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return -2;//디비오류
+		return -2;// DB오류
+	}
+	
+	public int join(User user) {	// 회원가입 
+		String SQL = "INSERT INTO USER VALUES(?, ?, ?, ?, ?)";	//SQL 문장 삽입 	
+		try {	// 예외처리 
+			pstmt = conn.prepareStatement(SQL);	// SQL 문장 호출  ID,Password,Name,Gender,Email 순
+			pstmt.setString(1,  user.getUserID());
+			pstmt.setString(2,  user.getUserPassword());
+			pstmt.setString(3,  user.getUserName());
+			pstmt.setString(4,  user.getUserGender());
+			pstmt.setString(5,  user.getUserEmail());
+			return pstmt.executeUpdate(); // 실행 Insert 문장을 수행한 경우 반드시 0이상의 숫자가 반환됨 
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;	// DB오류 
+		
 	}
 	
 }
