@@ -14,6 +14,21 @@
 </head>
 <body>
 	<%
+	
+	String userID = null;
+	if(session.getAttribute("userID") != null){	
+		userID = (String) session.getAttribute("userID");	// userID가 자신에게 할당된 세션ID를 담을수 있도록 함
+	}
+	
+	if ( userID != null ){		// 이미 로그인된 사람은 다시 로그인 할수 없도록 막아줌
+		PrintWriter script =response.getWriter();
+		script.println("<script>");
+		script.println("alert('이미 로그인이 되어있습니다.')");
+		script.println("location.href ='main.jsp'");
+		script.println("</script>");
+		
+	}
+	
 	UserDAO userDAO =new UserDAO();
 	int result = userDAO.login(user.getUserID(),user.getUserPassword());
 	
