@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+* {
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+    *.a {
+       font-weight: 400;
+     }
+     *.b {
+       font-weight: 700;
+     }
+     *.c {
+       font-weight: 800;
+     }
+     *.d {
+       font-weight: bold;
+     }
+
+h1 {
+	font-family: 'Cute Font', cursive;
+}
